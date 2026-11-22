@@ -57,7 +57,7 @@ DOC_TYPES = {
     "reference-cli": "reference-cli.template.md",
 }
 
-# migrate 用的「过去时措辞」启发式（与 n03-archive-flow 方法论一致）
+# migrate 用的「过去时措辞」启发式（与 n01-doc-system 的 archive-flow 模块方法论一致）
 MIGRATE_PAST_RE = re.compile(
     r"\b20\d{2}-\d{2}-\d{2}\b|已交付|已完成|本轮|首轮|上轮|N\d{1,2}\b|P[0-3]\b|时点")
 

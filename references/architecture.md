@@ -4,9 +4,9 @@ docs-ops = 文档体系多 lane 路由器。一个入口、多条隔离 lane，�
 
 ## 分层
 
-- `nodes/`：方法论节点，分两 lane——
-  - docs-system：n01 架构分层 → n02 正文规则 → n03 归档流程 → n04 守卫接入
-  - demand-lifecycle：n05 需求结构 → n06 状态映射 → n07 结构门禁
+- `nodes/`：两个 lane 各一个节点，节点内以 `modules` 拆内聚子模块（层次同时落在目录结构与 node-flow 契约，不平铺）——
+  - docs-system：`n01-doc-system/` = architecture → body-rules → archive-flow → guard
+  - demand-lifecycle：`n02-demand/` = structure → status → guard
 - `references/`：契约与链路。`doc-system.md` 是文档分层唯一事实源；`residue-taxonomy.md` 是残留类型学唯一事实源；`references/workflow/node-flow.json` 是机器可读的多 lane 节点链路；`assets/schemas/demand-contract.json` 是需求契约默认模板。
 - `jedocsops/`：可执行层。
   - `structure_check.py` —— docs-system lane 文档结构前置检查（契约数据驱动）。

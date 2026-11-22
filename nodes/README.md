@@ -1,10 +1,12 @@
 # 节点索引
 
-每节点一个目录、一篇 README。节点只讲方法与门禁，不写实例事实。
+两个 lane 各一个节点，节点内以子模块表达内聚侧面（层次同时落在目录结构与
+[`node-flow.json`](../references/workflow/node-flow.json) 的 `modules` 字段，不平铺）。
+节点只讲方法与门禁，不写实例事实。
 
-链路与节点元数据在 [`references/workflow/node-flow.json`](../references/workflow/node-flow.json)。
+| 节点 | lane | 子模块 |
+|---|---|---|
+| [n01-doc-system](n01-doc-system/README.md) | docs-system | architecture · body-rules · archive-flow · guard |
+| [n02-demand](n02-demand/README.md) | demand-lifecycle | structure · status · guard |
 
-- [n01-architecture 文档架构分层：正文/历史两层目录契约](n01-architecture/README.md)
-- [n02-body-rules 正文前置规范：现在时、无历史措辞、跳转位](n02-body-rules/README.md)
-- [n03-archive-flow 归档流程：先 git mv 归档再重写](n03-archive-flow/README.md)
-- [n04-guard 后置检测：残留检测能力与守卫接入](n04-guard/README.md)
+每个节点 README 是入口：何时进入、模块导航、退出条件；子模块按「前置写对 → 后置拦住」顺序阅读。

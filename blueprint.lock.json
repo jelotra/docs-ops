@@ -12,17 +12,14 @@
       {
         "id": "docs-system",
         "nodes": [
-          "n01-architecture",
-          "n02-body-rules",
-          "n03-archive-flow",
-          "n04-guard"
+          "n01-doc-system"
         ],
         "when": "新建或改造项目文档体系、写正文文档、归档历史、跑残留门禁"
       },
       {
         "id": "demand-lifecycle",
         "nodes": [
-          "n05-demand"
+          "n02-demand"
         ],
         "when": "新建需求、整理需求目录、对齐状态视图、跑需求结构门禁"
       }
@@ -30,23 +27,11 @@
     "name": "docs-ops",
     "nodes": [
       {
-        "id": "n01-architecture",
-        "title": "文档架构分层：正文/历史两层目录契约"
+        "id": "n01-doc-system",
+        "title": "文档体系：分层、正文规则、归档、后置门禁（含 4 子模块）"
       },
       {
-        "id": "n02-body-rules",
-        "title": "正文前置规范：现在时、无历史措辞、跳转位"
-      },
-      {
-        "id": "n03-archive-flow",
-        "title": "归档流程：先 git mv 归档再重写"
-      },
-      {
-        "id": "n04-guard",
-        "title": "后置检测：残留检测能力与守卫接入"
-      },
-      {
-        "id": "n05-demand",
+        "id": "n02-demand",
         "title": "需求文档体系：结构分类、状态映射、结构门禁（含 3 子模块）"
       }
     ],
@@ -78,22 +63,6 @@
     "nodes/README.md": {
       "initial_sha256": "e449d2a8fdadbb305746ba74c32e705fdb343c3443a2e8e152372856a20067ee",
       "owner": "managed"
-    },
-    "nodes/n01-architecture/README.md": {
-      "initial_sha256": "2b5de56e5016335424fc36fa0b78b521c003f5ff51d857d1a1f3e8a379dcd6b2",
-      "owner": "extension"
-    },
-    "nodes/n02-body-rules/README.md": {
-      "initial_sha256": "5b45d35419b5d72ae869fc0c2ab96735889ce9c88478a8915cef9deb54d96323",
-      "owner": "extension"
-    },
-    "nodes/n03-archive-flow/README.md": {
-      "initial_sha256": "fa31352e2c6648c5fe44f77e4681db753370c1c3beb12edc786a82014447e0f8",
-      "owner": "extension"
-    },
-    "nodes/n04-guard/README.md": {
-      "initial_sha256": "08d616ca8c1a68794398e4878fbfeb7842f4a6c3216172c93fafe939568053fd",
-      "owner": "extension"
     },
     "references/architecture.md": {
       "initial_sha256": "bceb0f1f62696748868c6d709e2e77c9f11abecb50c3100f40beef41ef956888",

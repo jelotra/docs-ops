@@ -67,21 +67,14 @@ python scripts/docs-ops.py demand --project <项目> [--contract docs/demand-con
 
 ## 5. 节点与链路
 
-| 节点 | lane | 职责 |
-|---|---|---|
-| [n01-architecture](nodes/n01-architecture/README.md) | docs-system | 文档架构分层：正文/历史两层目录契约 |
-| [n02-body-rules](nodes/n02-body-rules/README.md) | docs-system | 正文前置规范：现在时、无历史措辞、跳转位 |
-| [n03-archive-flow](nodes/n03-archive-flow/README.md) | docs-system | 归档流程：先 git mv 归档再重写 |
-| [n04-guard](nodes/n04-guard/README.md) | docs-system | 后置检测：残留检测能力与守卫接入 |
-| [n05-demand](nodes/n05-demand/README.md) | demand-lifecycle | 需求文档体系（一个节点，三个内聚子模块，不平铺） |
+两个 lane 各一个节点、节点内拆内聚子模块（层次同时落在目录结构与 `node-flow.json` 的 `modules` 字段，不平铺）：
 
-`n05-demand` 的子模块（层次关系，按序阅读）：
+| 节点 | lane | 职责 | 子模块 |
+|---|---|---|---|
+| [n01-doc-system](nodes/n01-doc-system/README.md) | docs-system | 项目说明文档体系 | [architecture](nodes/n01-doc-system/architecture.md) · [body-rules](nodes/n01-doc-system/body-rules.md) · [archive-flow](nodes/n01-doc-system/archive-flow.md) · [guard](nodes/n01-doc-system/guard.md) |
+| [n02-demand](nodes/n02-demand/README.md) | demand-lifecycle | 需求文档体系 | [structure](nodes/n02-demand/structure.md) · [status](nodes/n02-demand/status.md) · [guard](nodes/n02-demand/guard.md) |
 
-| 子模块 | 回答的问题 |
-|---|---|
-| [structure](nodes/n05-demand/structure.md) | 需求文档分几类、放哪、叫什么 |
-| [status](nodes/n05-demand/status.md) | 状态有哪几种、看板/树/文档怎么对齐 |
-| [guard](nodes/n05-demand/guard.md) | 怎么机械校验、怎么和 docs-system lane 隔离 |
+每个节点内按「前置写对 → 后置拦住」的依赖顺序阅读子模块；各节点 README 是入口（何时进入、模块导航、退出条件）。
 
 ## 6. 验证
 

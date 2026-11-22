@@ -1,5 +1,7 @@
 # 后置检测：残留检测能力与守卫接入
 
+> 所属节点：[n01-doc-system 文档体系](README.md) · 架构 → 正文 → 归档 → 守卫
+
 > **何时进入**：文档/代码交付前，每次测试与 CI；或新发生一次「残留事故」需要固化为规则时。
 > **离开条件**：`python scripts/docs-ops.py check --project <项目>`（结构 + 残留）退出码 0；守卫已接入项目 test runner / CI。
 
