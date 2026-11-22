@@ -1,0 +1,10 @@
+{
+  "entries": [
+    {
+      "entry": "scripts/je-docs-ops.py",
+      "implementation": "jedocsops/cli.py",
+      "kind": "report"
+    }
+  ],
+  "schema_version": 1
+}

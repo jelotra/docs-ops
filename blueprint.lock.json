@@ -1,0 +1,127 @@
+{
+  "blueprint_version": "0.3.0",
+  "config": {
+    "blueprint_version": "0.3.0",
+    "description": "\u9879\u76ee\u6587\u6863\u4f53\u7cfb\u89c4\u8303\u4e0e\u6b8b\u7559\u68c0\u6d4b\u7edf\u4e00\u5165\u53e3\uff1a\u524d\u7f6e\uff08\u6587\u6863\u5206\u5c42/\u6b63\u6587\u89c4\u5219/\u5f52\u6863\u6d41\u7a0b/\u6a21\u677f\uff09+ \u540e\u7f6e\uff08\u8bed\u8a00\u65e0\u5173\u6b8b\u7559\u68c0\u6d4b\u5f15\u64ce\uff0cpattern/dirList/deadLinks/generatedDrift\uff09\u3002\u89e6\u53d1\uff1a\u6587\u6863\u4f53\u7cfb\u3001\u6587\u6863\u5206\u5c42\u3001\u6b63\u6587\u89c4\u8303\u3001\u5386\u53f2\u5f52\u6863\u3001\u6b8b\u7559\u68c0\u6d4b\u3001\u6539\u540d\u6e05\u626b\u3001rename ledger\u3001\u91cd\u6784\u9a8c\u6536\u6b8b\u7559\u3001\u751f\u6210\u7269\u6f02\u79fb\u3002",
+    "domain_extensions": [
+      "SKILL.md",
+      "references/architecture.md",
+      "skill.manifest.json"
+    ],
+    "lanes": [
+      {
+        "id": "docs-system",
+        "nodes": [
+          "n01-architecture",
+          "n02-body-rules",
+          "n03-archive-flow",
+          "n04-guard"
+        ],
+        "when": "\u65b0\u5efa\u6216\u6539\u9020\u9879\u76ee\u6587\u6863\u4f53\u7cfb\u3001\u5199\u6b63\u6587\u6587\u6863\u3001\u5f52\u6863\u5386\u53f2\u3001\u8dd1\u6b8b\u7559\u95e8\u7981"
+      }
+    ],
+    "name": "je-docs-ops",
+    "nodes": [
+      {
+        "id": "n01-architecture",
+        "title": "\u6587\u6863\u67b6\u6784\u5206\u5c42\uff1a\u6b63\u6587/\u5386\u53f2\u4e24\u5c42\u76ee\u5f55\u5951\u7ea6"
+      },
+      {
+        "id": "n02-body-rules",
+        "title": "\u6b63\u6587\u524d\u7f6e\u89c4\u8303\uff1a\u73b0\u5728\u65f6\u3001\u65e0\u5386\u53f2\u63aa\u8f9e\u3001\u8df3\u8f6c\u4f4d"
+      },
+      {
+        "id": "n03-archive-flow",
+        "title": "\u5f52\u6863\u6d41\u7a0b\uff1a\u5148 git mv \u5f52\u6863\u518d\u91cd\u5199"
+      },
+      {
+        "id": "n04-guard",
+        "title": "\u540e\u7f6e\u68c0\u6d4b\uff1a\u6b8b\u7559\u68c0\u6d4b\u80fd\u529b\u4e0e\u5b88\u536b\u63a5\u5165"
+      }
+    ],
+    "profile": "skill-cli",
+    "python_module": "jedocsops",
+    "schema_version": "1.0"
+  },
+  "files": {
+    ".gitignore": {
+      "initial_sha256": "a51104264729e7b362ea8c739de0ada29ba6e4f6047580ec3a3fd330ad20fd47",
+      "owner": "managed"
+    },
+    "SKILL.md": {
+      "initial_sha256": "da4bad4dafb60acc7722e404616ed2fe9e6c940a26b0b81d75c2876cebc89336",
+      "owner": "extension"
+    },
+    "conftest.py": {
+      "initial_sha256": "875480ad4d3980f304736c3a8213970d439f6ec5e49a3fc9df33a1f920d8679f",
+      "owner": "managed"
+    },
+    "jedocsops/__init__.py": {
+      "initial_sha256": "fb2c6f2ecd29f5540278827a82f34a899810d4776c693b2c406b283edbca726a",
+      "owner": "extension"
+    },
+    "jedocsops/cli.py": {
+      "initial_sha256": "701f8bec822c78feaf77688a10c8dcadf0781f26444162e08d69d79c0d77c005",
+      "owner": "extension"
+    },
+    "nodes/README.md": {
+      "initial_sha256": "e449d2a8fdadbb305746ba74c32e705fdb343c3443a2e8e152372856a20067ee",
+      "owner": "managed"
+    },
+    "nodes/n01-architecture/README.md": {
+      "initial_sha256": "2b5de56e5016335424fc36fa0b78b521c003f5ff51d857d1a1f3e8a379dcd6b2",
+      "owner": "extension"
+    },
+    "nodes/n02-body-rules/README.md": {
+      "initial_sha256": "5b45d35419b5d72ae869fc0c2ab96735889ce9c88478a8915cef9deb54d96323",
+      "owner": "extension"
+    },
+    "nodes/n03-archive-flow/README.md": {
+      "initial_sha256": "fa31352e2c6648c5fe44f77e4681db753370c1c3beb12edc786a82014447e0f8",
+      "owner": "extension"
+    },
+    "nodes/n04-guard/README.md": {
+      "initial_sha256": "08d616ca8c1a68794398e4878fbfeb7842f4a6c3216172c93fafe939568053fd",
+      "owner": "extension"
+    },
+    "references/architecture.md": {
+      "initial_sha256": "bceb0f1f62696748868c6d709e2e77c9f11abecb50c3100f40beef41ef956888",
+      "owner": "extension"
+    },
+    "references/cli-contracts.json": {
+      "initial_sha256": "2f1fcf5d47e08b4766945314f724c91ea3a2b4234fffa328cf6cfbfbe1cc566e",
+      "owner": "extension"
+    },
+    "references/workflow/node-flow.json": {
+      "initial_sha256": "8fcf05498b36ad59dd6126601582450067f8da0c18050ed2b47c57668583785c",
+      "owner": "managed"
+    },
+    "scripts/je-docs-ops.py": {
+      "initial_sha256": "8253e5cfbbb71f0d1d1e284bfb2dd93a35a2a329d55d48c1730316028fdd18c9",
+      "owner": "managed"
+    },
+    "skill.manifest.json": {
+      "initial_sha256": "0689f0da823ca7c22208649f94d5a1e5ad3afc8346fc0ffa5bae4523da8877b3",
+      "owner": "extension"
+    },
+    "tests/test_cli_contract.py": {
+      "initial_sha256": "654580e1847549d86cae2f72e2323d12b81c4a10c936be81a4fd1114fb15c1c9",
+      "owner": "managed"
+    },
+    "tests/test_structure.py": {
+      "initial_sha256": "f9615b4cc21624c24b139099ffa50ed9b428cce5d4424ec4581a725e9792798b",
+      "owner": "managed"
+    },
+    "tools/README.md": {
+      "initial_sha256": "458bf3605158c3c32acba1993de1097666e7d9f314f213548861e8389b311957",
+      "owner": "managed"
+    },
+    "tools/run_tests.py": {
+      "initial_sha256": "9bb9a2a7683c0159a1195aa057827d5f62984d9f0902a758d43dcbaa89d6976a",
+      "owner": "managed"
+    }
+  },
+  "generator_version": "0.1.0",
+  "profile": "skill-cli",
+  "schema_version": "1.0"
+}

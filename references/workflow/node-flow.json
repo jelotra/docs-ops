@@ -1,0 +1,33 @@
+{
+  "description": "je-docs-ops \u7684\u8282\u70b9\u4e0e\u94fe\u8def\u5951\u7ea6\u3002nodes \u53ea\u8bb2\u65b9\u6cd5\u4e0e\u95e8\u7981\u3002",
+  "lanes": {
+    "docs-system": {
+      "nodes": [
+        "n01-architecture",
+        "n02-body-rules",
+        "n03-archive-flow",
+        "n04-guard"
+      ],
+      "when": "\u65b0\u5efa\u6216\u6539\u9020\u9879\u76ee\u6587\u6863\u4f53\u7cfb\u3001\u5199\u6b63\u6587\u6587\u6863\u3001\u5f52\u6863\u5386\u53f2\u3001\u8dd1\u6b8b\u7559\u95e8\u7981"
+    }
+  },
+  "nodes": {
+    "n01-architecture": {
+      "readme": "nodes/n01-architecture/README.md",
+      "title": "\u6587\u6863\u67b6\u6784\u5206\u5c42\uff1a\u6b63\u6587/\u5386\u53f2\u4e24\u5c42\u76ee\u5f55\u5951\u7ea6"
+    },
+    "n02-body-rules": {
+      "readme": "nodes/n02-body-rules/README.md",
+      "title": "\u6b63\u6587\u524d\u7f6e\u89c4\u8303\uff1a\u73b0\u5728\u65f6\u3001\u65e0\u5386\u53f2\u63aa\u8f9e\u3001\u8df3\u8f6c\u4f4d"
+    },
+    "n03-archive-flow": {
+      "readme": "nodes/n03-archive-flow/README.md",
+      "title": "\u5f52\u6863\u6d41\u7a0b\uff1a\u5148 git mv \u5f52\u6863\u518d\u91cd\u5199"
+    },
+    "n04-guard": {
+      "readme": "nodes/n04-guard/README.md",
+      "title": "\u540e\u7f6e\u68c0\u6d4b\uff1a\u6b8b\u7559\u68c0\u6d4b\u80fd\u529b\u4e0e\u5b88\u536b\u63a5\u5165"
+    }
+  },
+  "schema_version": 1
+}
