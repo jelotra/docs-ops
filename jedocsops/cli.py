@@ -18,7 +18,31 @@ from pathlib import Path
 configured = os.environ.get("SKILLS_RUNTIME_TOOLKIT")
 toolkit = Path(configured) if configured else Path(__file__).resolve().parents[2] / "skills-runtime-toolkit"
 sys.path.insert(0, str(toolkit))
-from skills_runtime_toolkit.report_output import add_report_arguments, emit_report  # noqa: E402
+try:
+    from skills_runtime_toolkit.report_output import add_report_arguments, emit_report  # noqa: E402
+except ImportError:  # 纯可选依赖缺失时内联等价实现，保证核心命令不瘫痪
+    import argparse as _argparse
+
+    def add_report_arguments(parser: _argparse.ArgumentParser) -> None:
+        group = parser.add_mutually_exclusive_group()
+        group.add_argument("--format", choices=("text", "json", "markdown"), default="text")
+        group.add_argument("--json", dest="format", action="store_const", const="json")
+        group.add_argument("--markdown", "--md", dest="format", action="store_const", const="markdown")
+        parser.add_argument("--out", help="Write the selected format to a new file.")
+
+    def emit_report(report, output_format, text_renderer, markdown_renderer, out=None) -> None:
+        if output_format == "json":
+            text = json.dumps(report, ensure_ascii=False, indent=2, allow_nan=False)
+        elif output_format == "markdown":
+            text = markdown_renderer(report)
+        else:
+            text = text_renderer(report)
+        text = text.rstrip("\n") + "\n"
+        if out is not None:
+            with open(out, "x", encoding="utf-8", newline="\n") as stream:
+                stream.write(text)
+            sys.stderr.write(f"Saved report: {out}\n")
+        sys.stdout.write(text)
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from jedocsops import residue, structure_check  # noqa: E402

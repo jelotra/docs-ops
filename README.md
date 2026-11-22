@@ -14,14 +14,9 @@
 
 作为用户级 Skill 使用，放到 `~/.agents/skills/je-docs-ops/` 即可（本仓库即该目录）。
 
-依赖：
+依赖：**仅 Python 3.9+**（标准库，零第三方依赖），开箱即用。
 
-- Python 3.9+（仅标准库，零第三方依赖）；
-- 通用运行时库 `skills_runtime_toolkit`（提供 `report_output`：报告型 CLI 的 `--format/--json/--markdown/--out` 输出）。它按以下顺序定位，找不到则导入失败：
-  1. 环境变量 `SKILLS_RUNTIME_TOOLKIT` 指向其根目录；
-  2. 与本 skill 同级的 `skills-runtime-toolkit/` 目录。
-
-这是一个纯库（`kind: library`，只被 import、不参与任务路由），不是需要单独安装或调用的技能。CLI 在加载时统一导入其 `report_output`，因此所有命令都依赖它——缺失时任何 CLI 子命令都会因 `ModuleNotFoundError` 无法启动。
+同家族的 `skills_runtime_toolkit` 若存在会被用于报告输出（`--format/--json/--markdown/--out`）；它是可选库，缺失时 CLI 自动用内置等价实现，所有命令照常工作。
 
 ## 快速开始
 

@@ -128,6 +128,21 @@ def test_residue_missing_rules_exit_two(tmp_path):
     assert code == 2
 
 
+def test_cli_works_without_runtime_toolkit(tmp_path):
+    """纯可选库缺失时核心命令不瘫痪：check/new 与三种报告格式均可用。"""
+    import os
+    env = {**os.environ, "SKILLS_RUNTIME_TOOLKIT": str(tmp_path / "nonexistent")}
+    out = tmp_path / "docs" / "no-tk.md"
+    _doc_tree(tmp_path)  # 提供完整结构 + rules，check 才返回 0
+    for args in (["check", "--project", str(tmp_path), "--format", "json"],
+                 ["new", "--type", "history-index", "--out", str(out), "--title", "无库"],
+                 ["describe", "--markdown"]):
+        proc = subprocess.run([sys.executable, str(SHIM), *args],
+                              capture_output=True, env=env)
+        assert proc.returncode == 0, proc.stderr.decode("utf-8", errors="replace")
+        assert b"ModuleNotFoundError" not in proc.stderr
+
+
 def test_shim_survives_gbk_console(tmp_path):
     """入口 shim 必须在 GBK 默认控制台下不崩：new 打印 ✓/中文时不得抛 UnicodeEncodeError。"""
     import os
