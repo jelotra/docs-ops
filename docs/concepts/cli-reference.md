@@ -4,7 +4,7 @@
 
 ## 统一入口
 
-入口脚本：`scripts/je-docs-ops.py`。子命令：`describe` / `check` / `new` / `migrate` / `residue`。
+入口脚本：`scripts/docs-ops.py`。子命令：`describe` / `check` / `new` / `migrate` / `residue`。
 
 所有命令都支持报告格式 `--format text|json|markdown`（或 `--json` / `--markdown`）与 `--out <文件>`。退出码：`0` 通过 / `1` 有违规 / `2` 配置或环境问题。
 
@@ -13,7 +13,7 @@
 一次跑完文档结构前置检查 + 残留守卫。
 
 ```bash
-python scripts/je-docs-ops.py check --project <项目>
+python scripts/docs-ops.py check --project <项目>
 ```
 
 | 参数 | 说明 |
@@ -29,7 +29,7 @@ python scripts/je-docs-ops.py check --project <项目>
 从模板新建文档，自带历史跳转位（跳转路径按目标位置自动计算）。
 
 ```bash
-python scripts/je-docs-ops.py new --type body-doc|roadmap|reference-cli|history-index --out <路径> [--title <标题>]
+python scripts/docs-ops.py new --type body-doc|roadmap|reference-cli|history-index --out <路径> [--title <标题>]
 ```
 
 | 参数 | 说明 |
@@ -45,7 +45,7 @@ python scripts/je-docs-ops.py new --type body-doc|roadmap|reference-cli|history-
 输出旧文档改造的操作清单：按过去时措辞启发式列出建议随原文归档的行，以及 `git mv` 目标路径。
 
 ```bash
-python scripts/je-docs-ops.py migrate --file <旧文档> --project <项目>
+python scripts/docs-ops.py migrate --file <旧文档> --project <项目>
 ```
 
 ## residue
@@ -54,14 +54,14 @@ python scripts/je-docs-ops.py migrate --file <旧文档> --project <项目>
 
 ```bash
 # 仅检测；--generated 追加生成物漂移
-python scripts/je-docs-ops.py residue --project <项目> [--generated]
+python scripts/docs-ops.py residue --project <项目> [--generated]
 
 # 铸造：为项目生成残留规则
-python scripts/je-docs-ops.py residue --mint --project <项目> [--ledger ledger.json]
+python scripts/docs-ops.py residue --mint --project <项目> [--ledger ledger.json]
 
 # 从 git 历史提取旧名清单（rename ledger）
-python scripts/je-docs-ops.py residue --extract-ledger --repo <项目> --commit <sha>
-python scripts/je-docs-ops.py residue --extract-ledger --repo <项目> --range <a..b> --min-count <n>
+python scripts/docs-ops.py residue --extract-ledger --repo <项目> --commit <sha>
+python scripts/docs-ops.py residue --extract-ledger --repo <项目> --range <a..b> --min-count <n>
 ```
 
 | 参数 | 说明 |

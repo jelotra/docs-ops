@@ -1,4 +1,4 @@
-# 残留类型学与规则 schema（je-docs-ops 方法论文）
+# 残留类型学与规则 schema（docs-ops 方法论文）
 
 > 本文件只含通用方法论与数据契约；任何项目特有的词形（旧名、路径）都属于项目的
 > `residue.rules.json` 数据，不进入本文。

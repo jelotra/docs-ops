@@ -1,8 +1,9 @@
 """Report CLI skeleton; domain renderers belong to this skill.
 
-je-docs-ops 统一入口：
+docs-ops 统一入口：
   describe  骨架自描述（脚手架契约，勿破坏其输出形状）
-  check     一次跑完：文档结构前置检查 + 残留守卫检测
+  check     一次跑完：文档结构前置检查 + 残留守卫检测（docs-system lane）
+  demand    需求文档结构检查（demand-lifecycle lane，与 check 隔离）
   new       从模板起文档（自带历史跳转位）
   migrate   旧文档改造操作清单（先归档、再重写）
   residue   仅跑残留检测引擎（pattern/dirList/deadLinks/generatedDrift）
@@ -45,7 +46,7 @@ except ImportError:  # 纯可选依赖缺失时内联等价实现，保证核心
         sys.stdout.write(text)
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from jedocsops import residue, structure_check  # noqa: E402
+from jedocsops import demand_check, residue, structure_check  # noqa: E402
 
 SKILL_ROOT = Path(__file__).resolve().parents[1]
 TEMPLATE_DIR = SKILL_ROOT / "assets" / "templates"
@@ -62,7 +63,7 @@ MIGRATE_PAST_RE = re.compile(
 
 
 def _cmd_describe(args) -> tuple[int, dict]:
-    result = {"status": "ok", "data": {"name": "je-docs-ops", "mode": "read-only"}}
+    result = {"status": "ok", "data": {"name": "docs-ops", "mode": "read-only"}}
     emit_report(result, args.format, lambda data: data["data"]["name"],
                 lambda data: "# " + data["data"]["name"], args.out)
     return 0
@@ -125,6 +126,31 @@ def _cmd_check(args) -> tuple[int, dict]:
     return max(codes) if codes else 0
 
 
+def _cmd_demand(args) -> tuple[int, dict]:
+    """demand-lifecycle lane：需求文档结构检查（与 docs-system lane 隔离）。"""
+    project = Path(args.project).resolve()
+    contract_path = Path(args.contract).resolve() if args.contract else None
+    try:
+        contract = demand_check.load_contract(contract_path, project)
+    except demand_check.ContractError as exc:
+        print(exc, file=sys.stderr)
+        return 2
+    env, lines, code = demand_check.check(project, contract)
+    for line in lines:
+        print(line, file=sys.stderr)
+    status = "ok" if code == 0 else "failed"
+    result = {"status": status, "data": {"demand": env}}
+    emit_report(
+        result, args.format,
+        lambda d: f"demand：{status}\nscanned={d['data']['demand']['scanned']} "
+                  f"errors={d['data']['demand']['errors']} warnings={d['data']['demand']['warnings']}",
+        lambda d: "# 需求文档结构检查报告\n\n"
+                  + _render_findings_rows(d["data"]["demand"].get("findings", [])),
+        args.out,
+    )
+    return code
+
+
 def _cmd_new(args) -> tuple[int, dict]:
     template_name = DOC_TYPES.get(args.doc_type)
     template_path = TEMPLATE_DIR / template_name
@@ -179,10 +205,10 @@ def _cmd_migrate(args) -> tuple[int, dict]:
     archive_target = f"{history_dir.as_posix().rstrip('/')}/{source.stem}.md"
     steps = [
         f"1. git mv {rel_source} {archive_target}  # 原文整体进历史，事实零丢失",
-        f"2. 在原路径用 body-doc 骨架重写：python scripts/je-docs-ops.py new --type body-doc "
+        f"2. 在原路径用 body-doc 骨架重写：python scripts/docs-ops.py new --type body-doc "
         f"--out {rel_source} --title \"{source.stem}\"",
         f"3. 重写稿只写当前是什么；历史细节一律链接到 {archive_target}",
-        f"4. 跑门禁：python scripts/je-docs-ops.py check --project {project}",
+        f"4. 跑门禁：python scripts/docs-ops.py check --project {project}",
     ]
     data = {
         "source": rel_source,
@@ -258,7 +284,7 @@ def _cmd_residue(args) -> tuple[int, dict]:
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(prog="je-docs-ops")
+    parser = argparse.ArgumentParser(prog="docs-ops")
     commands = parser.add_subparsers(dest="command", required=True)
 
     describe = commands.add_parser("describe")
@@ -273,6 +299,12 @@ def main(argv=None):
     check.add_argument("--skip-structure", action="store_true")
     check.add_argument("--skip-residue", action="store_true")
     check.set_defaults(func=_cmd_check)
+
+    demand = commands.add_parser("demand", help="需求文档结构检查（demand-lifecycle lane）")
+    add_report_arguments(demand)
+    demand.add_argument("--project", default=".")
+    demand.add_argument("--contract", default=None, help="需求契约 JSON（默认 <project>/docs/demand-contract.json）")
+    demand.set_defaults(func=_cmd_demand)
 
     new = commands.add_parser("new", help="从模板新建文档（自带历史跳转位）")
     new.add_argument("--type", dest="doc_type", required=True, choices=sorted(DOC_TYPES))

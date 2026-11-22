@@ -10,7 +10,7 @@
 
 ## 怎么做
 
-1. **取模板**：`python scripts/je-docs-ops.py new --type body-doc --out docs/concepts/x.md --title "X"`——模板自带历史跳转位，跳转路径按目标位置自动计算。
+1. **取模板**：`python scripts/docs-ops.py new --type body-doc --out docs/concepts/x.md --title "X"`——模板自带历史跳转位，跳转路径按目标位置自动计算。
 2. **现在时写作**：只描述当前机制。禁写：具体日期、需求号/轮次编号、「已交付/本轮/首轮」、时点计数（如「680 个测试」）。
 3. **历史外链**：需要交代演变时写一句「详见历史档案」+ 链接，不复制历史内容进正文。
 4. **roadmap 特例**：路线图只写未来方向与搁置理由，已完成条目直接移除（事实已在历史层）。
@@ -18,7 +18,7 @@
 ## 产出
 
 - 一份从模板起步、当前时态、带跳转位的正文文档。
-- 自检：`python scripts/je-docs-ops.py check --project <项目>` 不得出现 `roadmap-past` / `history-link` 违规。
+- 自检：`python scripts/docs-ops.py check --project <项目>` 不得出现 `roadmap-past` / `history-link` 违规。
 
 ## 边界
 

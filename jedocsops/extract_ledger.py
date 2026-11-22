@@ -98,7 +98,7 @@ def extract(repo: Path, commits: list[str], min_count: int) -> dict:
 
 
 def main(argv=None) -> int:
-    parser = argparse.ArgumentParser(prog="je-docs-ops-extract-ledger",
+    parser = argparse.ArgumentParser(prog="docs-ops-extract-ledger",
                                      description="从 git 历史提取改名残留候选（ledger）")
     parser.add_argument("--repo", default=None)
     parser.add_argument("--commits", default=None, help="逗号分隔的多个 sha")

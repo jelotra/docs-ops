@@ -1,5 +1,5 @@
 {
-  "$doc": "je-docs-ops 自身的文档结构契约：正文层仅 concepts/，历史层 docs/history/。",
+  "$doc": "docs-ops 自身的文档结构契约：正文层仅 concepts/，历史层 docs/history/。",
   "bodyDir": "docs",
   "historyDir": "docs/history",
   "historyIndex": "docs/history/README.md",

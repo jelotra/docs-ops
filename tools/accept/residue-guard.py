@@ -4,7 +4,7 @@
 本模块是自包含引擎：只依赖标准库、不含任何 jedocsops 内部引用，
 可被 mint 复制进目标项目独立运行（与原 Node 引擎「守卫代码进项目」同一契约）。
 
-所有检测内容来自项目的 residue.rules.json（由 je-docs-ops 的 mint 铸造或手工编写）。规则类型：
+所有检测内容来自项目的 residue.rules.json（由 docs-ops 的 mint 铸造或手工编写）。规则类型：
   patterns        正则残留扫描（旧名字面量 / 令牌改名 / 过期计数…），含范围与行豁免
   dirLists        清单文件里声明的目录/条目必须真实存在
   deadLinks       Markdown 相对链接/图片目标存在性
@@ -120,7 +120,7 @@ def load_rules(rules_path: Path) -> dict:
     if not rules_path.is_file():
         raise ConfigError(
             f"找不到规则文件：{rules_path}\n"
-            "  请先用 je-docs-ops 的 mint 子命令铸造，或手工编写"
+            "  请先用 docs-ops 的 mint 子命令铸造，或手工编写"
             "（schema 见 skill 的 references/residue-taxonomy.md）。"
         )
     try:

@@ -1,17 +1,18 @@
 {
   "schema_version": "1.0",
-  "name": "je-docs-ops",
+  "name": "docs-ops",
   "kind": "capability",
   "layer": "generic",
-  "version": "0.2.0",
-  "summary": "项目文档体系规范与残留检测统一入口：前置（正文/历史分层、模板、结构检查）+ 后置（语言无关残留检测引擎 pattern/dirList/deadLinks/generatedDrift + ledger 提取 + 守卫铸造）",
+  "version": "0.3.0",
+  "summary": "文档体系多 lane 统一入口：docs-system（正文/历史分层、模板、结构检查、残留检测 pattern/dirList/deadLinks/generatedDrift + ledger 提取 + 守卫铸造）+ demand-lifecycle（需求文档结构检查、状态视图、验收编号门禁）。两 lane 契约与引擎隔离，互不误伤。",
   "entrypoints": [
     "SKILL.md",
     "references/workflow/node-flow.json",
-    { "command": "check", "argv": ["python", "scripts/je-docs-ops.py", "check", "--project", "<项目>"] },
-    { "command": "new", "argv": ["python", "scripts/je-docs-ops.py", "new", "--type", "body-doc", "--out", "<路径>"] },
-    { "command": "migrate", "argv": ["python", "scripts/je-docs-ops.py", "migrate", "--file", "<旧文档>"] },
-    { "command": "residue", "argv": ["python", "scripts/je-docs-ops.py", "residue", "--project", "<项目>"] }
+    { "command": "check", "argv": ["python", "scripts/docs-ops.py", "check", "--project", "<项目>"] },
+    { "command": "demand", "argv": ["python", "scripts/docs-ops.py", "demand", "--project", "<项目>"] },
+    { "command": "new", "argv": ["python", "scripts/docs-ops.py", "new", "--type", "body-doc", "--out", "<路径>"] },
+    { "command": "migrate", "argv": ["python", "scripts/docs-ops.py", "migrate", "--file", "<旧文档>"] },
+    { "command": "residue", "argv": ["python", "scripts/docs-ops.py", "residue", "--project", "<项目>"] }
   ],
   "tests": {
     "paths": ["tests"],
@@ -24,7 +25,10 @@
       "doc-templates",
       "residue-detection",
       "residue-ledger",
-      "residue-mint"
+      "residue-mint",
+      "demand-structure",
+      "demand-status-mapping",
+      "demand-structure-guard"
     ],
     "consumes": ["report-output-v1"]
   },
@@ -32,6 +36,6 @@
     "tools": [],
     "skills": ["skills-runtime-toolkit"]
   },
-  "owner": "je-docs-ops",
+  "owner": "docs-ops",
   "status": "active"
 }

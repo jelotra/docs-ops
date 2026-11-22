@@ -202,7 +202,7 @@ def mint(project: Path, ledger_path: Path | None = None, min_count: int = 3,
 
 
 def main(argv=None) -> int:
-    parser = argparse.ArgumentParser(prog="je-docs-ops-mint",
+    parser = argparse.ArgumentParser(prog="docs-ops-mint",
                                      description="为项目铸造自有残留守卫（Python 引擎）")
     parser.add_argument("--project", required=True)
     parser.add_argument("--ledger", default=None)

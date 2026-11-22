@@ -2,7 +2,7 @@
   "blueprint_version": "0.3.0",
   "config": {
     "blueprint_version": "0.3.0",
-    "description": "\u9879\u76ee\u6587\u6863\u4f53\u7cfb\u89c4\u8303\u4e0e\u6b8b\u7559\u68c0\u6d4b\u7edf\u4e00\u5165\u53e3\uff1a\u524d\u7f6e\uff08\u6587\u6863\u5206\u5c42/\u6b63\u6587\u89c4\u5219/\u5f52\u6863\u6d41\u7a0b/\u6a21\u677f\uff09+ \u540e\u7f6e\uff08\u8bed\u8a00\u65e0\u5173\u6b8b\u7559\u68c0\u6d4b\u5f15\u64ce\uff0cpattern/dirList/deadLinks/generatedDrift\uff09\u3002\u89e6\u53d1\uff1a\u6587\u6863\u4f53\u7cfb\u3001\u6587\u6863\u5206\u5c42\u3001\u6b63\u6587\u89c4\u8303\u3001\u5386\u53f2\u5f52\u6863\u3001\u6b8b\u7559\u68c0\u6d4b\u3001\u6539\u540d\u6e05\u626b\u3001rename ledger\u3001\u91cd\u6784\u9a8c\u6536\u6b8b\u7559\u3001\u751f\u6210\u7269\u6f02\u79fb\u3002",
+    "description": "文档体系多 lane 统一入口：docs-system（正文/历史分层、模板、结构检查、残留检测）+ demand-lifecycle（需求文档结构/状态视图/结构门禁）。两 lane 契约与引擎隔离。",
     "domain_extensions": [
       "SKILL.md",
       "references/architecture.md",
@@ -17,26 +17,47 @@
           "n03-archive-flow",
           "n04-guard"
         ],
-        "when": "\u65b0\u5efa\u6216\u6539\u9020\u9879\u76ee\u6587\u6863\u4f53\u7cfb\u3001\u5199\u6b63\u6587\u6587\u6863\u3001\u5f52\u6863\u5386\u53f2\u3001\u8dd1\u6b8b\u7559\u95e8\u7981"
+        "when": "新建或改造项目文档体系、写正文文档、归档历史、跑残留门禁"
+      },
+      {
+        "id": "demand-lifecycle",
+        "nodes": [
+          "n05-demand-structure",
+          "n06-demand-status",
+          "n07-demand-guard"
+        ],
+        "when": "新建需求、整理需求目录、对齐状态视图、跑需求结构门禁"
       }
     ],
-    "name": "je-docs-ops",
+    "name": "docs-ops",
     "nodes": [
       {
         "id": "n01-architecture",
-        "title": "\u6587\u6863\u67b6\u6784\u5206\u5c42\uff1a\u6b63\u6587/\u5386\u53f2\u4e24\u5c42\u76ee\u5f55\u5951\u7ea6"
+        "title": "文档架构分层：正文/历史两层目录契约"
       },
       {
         "id": "n02-body-rules",
-        "title": "\u6b63\u6587\u524d\u7f6e\u89c4\u8303\uff1a\u73b0\u5728\u65f6\u3001\u65e0\u5386\u53f2\u63aa\u8f9e\u3001\u8df3\u8f6c\u4f4d"
+        "title": "正文前置规范：现在时、无历史措辞、跳转位"
       },
       {
         "id": "n03-archive-flow",
-        "title": "\u5f52\u6863\u6d41\u7a0b\uff1a\u5148 git mv \u5f52\u6863\u518d\u91cd\u5199"
+        "title": "归档流程：先 git mv 归档再重写"
       },
       {
         "id": "n04-guard",
-        "title": "\u540e\u7f6e\u68c0\u6d4b\uff1a\u6b8b\u7559\u68c0\u6d4b\u80fd\u529b\u4e0e\u5b88\u536b\u63a5\u5165"
+        "title": "后置检测：残留检测能力与守卫接入"
+      },
+      {
+        "id": "n05-demand-structure",
+        "title": "需求文档结构：实体与视图分离的分类法"
+      },
+      {
+        "id": "n06-demand-status",
+        "title": "需求状态机与视图映射"
+      },
+      {
+        "id": "n07-demand-guard",
+        "title": "需求结构门禁：demand 检查器与两 lane 隔离"
       }
     ],
     "profile": "skill-cli",
@@ -96,7 +117,7 @@
       "initial_sha256": "8fcf05498b36ad59dd6126601582450067f8da0c18050ed2b47c57668583785c",
       "owner": "managed"
     },
-    "scripts/je-docs-ops.py": {
+    "scripts/docs-ops.py": {
       "initial_sha256": "c5c526ec707c078baf04c837a1c7966db2299615b87835336f6f14e99a7767df",
       "owner": "managed"
     },

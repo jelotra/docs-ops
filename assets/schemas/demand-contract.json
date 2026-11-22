@@ -1,0 +1,14 @@
+{
+  "$doc": "需求文档结构契约（demand-lifecycle lane 默认模板）。复制到 <project>/docs/demand-contract.json 后按项目定制。与 docs/doc-contract.json（正文/历史层）互不干涉。",
+  "requestDir": "docs/request",
+  "dashboardDir": "docs/dashboard",
+  "requiredFiles": ["01-spec.md"],
+  "numberedPattern": "^(\\d{2})-[a-z0-9-]+\\.md$",
+  "numberingStrict": false,
+  "acceptanceHeading": "验收标准",
+  "acceptancePattern": "^\\s*-\\s*\\[[ xX]\\]\\s*A(\\d+)",
+  "traceabilityFile": "03-plan.md",
+  "traceabilityHeading": "验收追溯",
+  "pointerPattern": "^[A-Z]+-?\\d+-[a-z0-9]+(?:-[a-z0-9]+)*$",
+  "checkDashboard": true
+}

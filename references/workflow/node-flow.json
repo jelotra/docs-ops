@@ -1,5 +1,5 @@
 {
-  "description": "je-docs-ops \u7684\u8282\u70b9\u4e0e\u94fe\u8def\u5951\u7ea6\u3002nodes \u53ea\u8bb2\u65b9\u6cd5\u4e0e\u95e8\u7981\u3002",
+  "description": "docs-ops 的节点与链路契约。nodes 只讲方法与门禁。两 lane 隔离：docs-system 管项目说明文档，demand-lifecycle 管需求生命周期文档。",
   "lanes": {
     "docs-system": {
       "nodes": [
@@ -8,25 +8,49 @@
         "n03-archive-flow",
         "n04-guard"
       ],
-      "when": "\u65b0\u5efa\u6216\u6539\u9020\u9879\u76ee\u6587\u6863\u4f53\u7cfb\u3001\u5199\u6b63\u6587\u6587\u6863\u3001\u5f52\u6863\u5386\u53f2\u3001\u8dd1\u6b8b\u7559\u95e8\u7981"
+      "when": "新建或改造项目文档体系、写正文文档、归档历史、跑残留门禁",
+      "engine": "structure_check.py + residue.py",
+      "contract": "docs/doc-contract.json"
+    },
+    "demand-lifecycle": {
+      "nodes": [
+        "n05-demand-structure",
+        "n06-demand-status",
+        "n07-demand-guard"
+      ],
+      "when": "新建需求、整理需求目录、对齐状态视图、跑需求结构门禁",
+      "engine": "demand_check.py",
+      "contract": "docs/demand-contract.json"
     }
   },
   "nodes": {
     "n01-architecture": {
       "readme": "nodes/n01-architecture/README.md",
-      "title": "\u6587\u6863\u67b6\u6784\u5206\u5c42\uff1a\u6b63\u6587/\u5386\u53f2\u4e24\u5c42\u76ee\u5f55\u5951\u7ea6"
+      "title": "文档架构分层：正文/历史两层目录契约"
     },
     "n02-body-rules": {
       "readme": "nodes/n02-body-rules/README.md",
-      "title": "\u6b63\u6587\u524d\u7f6e\u89c4\u8303\uff1a\u73b0\u5728\u65f6\u3001\u65e0\u5386\u53f2\u63aa\u8f9e\u3001\u8df3\u8f6c\u4f4d"
+      "title": "正文前置规范：现在时、无历史措辞、跳转位"
     },
     "n03-archive-flow": {
       "readme": "nodes/n03-archive-flow/README.md",
-      "title": "\u5f52\u6863\u6d41\u7a0b\uff1a\u5148 git mv \u5f52\u6863\u518d\u91cd\u5199"
+      "title": "归档流程：先 git mv 归档再重写"
     },
     "n04-guard": {
       "readme": "nodes/n04-guard/README.md",
-      "title": "\u540e\u7f6e\u68c0\u6d4b\uff1a\u6b8b\u7559\u68c0\u6d4b\u80fd\u529b\u4e0e\u5b88\u536b\u63a5\u5165"
+      "title": "后置检测：残留检测能力与守卫接入"
+    },
+    "n05-demand-structure": {
+      "readme": "nodes/n05-demand-structure/README.md",
+      "title": "需求文档结构：实体与视图分离的分类法"
+    },
+    "n06-demand-status": {
+      "readme": "nodes/n06-demand-status/README.md",
+      "title": "需求状态机与视图映射"
+    },
+    "n07-demand-guard": {
+      "readme": "nodes/n07-demand-guard/README.md",
+      "title": "需求结构门禁：demand 检查器与两 lane 隔离"
     }
   },
   "schema_version": 1

@@ -184,7 +184,7 @@ def check(project: Path, contract: dict) -> tuple[dict, list[str], int]:
 
 
 def main(argv=None) -> int:
-    parser = argparse.ArgumentParser(prog="je-docs-ops-structure",
+    parser = argparse.ArgumentParser(prog="docs-ops-structure",
                                      description="文档结构前置检查（正文/历史两层契约）")
     parser.add_argument("--project", default=".")
     parser.add_argument("--contract", default=None, help="契约 JSON 路径（默认 <project>/docs/doc-contract.json）")

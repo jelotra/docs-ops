@@ -13,7 +13,7 @@
 1. **划两层**：正文层只描述「当前是什么」；历史层（默认 `docs/history/`）存放变更记录、决策、基线与已交付快照。判定标准一句话——**会过期的内容进历史，不会过期的进正文**。
 2. **定目录**：正文层一级子目录收敛为有限集合（如 `concepts/ channels/ reference/ integration/`），写入 `doc-contract.json` 的 `allowedDirs`，防止自由生长。
 3. **立索引**：历史层必须有 `README.md` 索引（档案清单表），正文层有文档地图（`index.md`）。
-4. **接跳转**：每份正文文档开头/结尾留「历史档案」跳转链接；运行 `python scripts/je-docs-ops.py check --skip-residue` 验证跳转位存在。
+4. **接跳转**：每份正文文档开头/结尾留「历史档案」跳转链接；运行 `python scripts/docs-ops.py check --skip-residue` 验证跳转位存在。
 
 ## 产出
 

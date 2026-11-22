@@ -6,7 +6,7 @@
 ## 输入
 
 - 待改造文档路径。
-- `python scripts/je-docs-ops.py migrate --file <旧文档>` 输出的操作清单（哪些行含历史措辞、归档目标路径）。
+- `python scripts/docs-ops.py migrate --file <旧文档>` 输出的操作清单（哪些行含历史措辞、归档目标路径）。
 
 ## 怎么做
 
@@ -14,7 +14,7 @@
 2. **先归档**：`git mv docs/x.md docs/history/x-archive.md`——**必须先归档再重写**，保证 git rename 检测成立、对比事实零丢失；禁止「复制内容后删除原文件」。
 3. **再重写**：在原路径用 n02 的模板起稿，只写当前是什么；历史细节一律链接到归档文件。
 4. **登记索引**：历史层 `README.md` 索引表追加一行（档案、内容、归档原因）。
-5. **跑门禁**：`python scripts/je-docs-ops.py check --project <项目>`（结构 + 残留两项全绿才算完成）。
+5. **跑门禁**：`python scripts/docs-ops.py check --project <项目>`（结构 + 残留两项全绿才算完成）。
 
 ## 产出
 

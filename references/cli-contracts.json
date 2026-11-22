@@ -1,7 +1,7 @@
 {
   "entries": [
     {
-      "entry": "scripts/je-docs-ops.py",
+      "entry": "scripts/docs-ops.py",
       "implementation": "jedocsops/cli.py",
       "kind": "report"
     }

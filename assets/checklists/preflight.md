@@ -1,7 +1,7 @@
 # 交付前清单（preflight）
 
-> 本清单是 je-docs-ops 自带的通用最小规范，从模板起稿的每份正文文档交付前逐项自检。
-> 不依赖任何外部 skill；机器可检项由 `python scripts/je-docs-ops.py check --project <项目>` 兜底。
+> 本清单是 docs-ops 自带的通用最小规范，从模板起稿的每份正文文档交付前逐项自检。
+> 不依赖任何外部 skill；机器可检项由 `python scripts/docs-ops.py check --project <项目>` 兜底。
 
 ## A. 正文规则（n02，机器可检）
 

@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from jedocsops import cli  # noqa: E402
 
-SHIM = ROOT / "scripts" / "je-docs-ops.py"
+SHIM = ROOT / "scripts" / "docs-ops.py"
 
 
 def _run_shim(*args):
