@@ -21,6 +21,14 @@ def test_every_node_has_a_readme_and_is_in_the_flow():
         assert (ROOT / "nodes" / node_id / "README.md").is_file(), node_id
 
 
+def test_node_modules_exist():
+    """节点的 modules（内聚子模块）文件必须存在，守护层次结构不平铺。"""
+    flow = _flow()
+    for node_id, node in flow["nodes"].items():
+        for module in node.get("modules", []):
+            assert (ROOT / module["path"]).is_file(), f"{node_id}/{module['id']}"
+
+
 def test_lanes_only_reference_known_nodes():
     flow = _flow()
     known = set(flow["nodes"])

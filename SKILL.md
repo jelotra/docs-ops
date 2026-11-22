@@ -73,9 +73,15 @@ python scripts/docs-ops.py demand --project <项目> [--contract docs/demand-con
 | [n02-body-rules](nodes/n02-body-rules/README.md) | docs-system | 正文前置规范：现在时、无历史措辞、跳转位 |
 | [n03-archive-flow](nodes/n03-archive-flow/README.md) | docs-system | 归档流程：先 git mv 归档再重写 |
 | [n04-guard](nodes/n04-guard/README.md) | docs-system | 后置检测：残留检测能力与守卫接入 |
-| [n05-demand-structure](nodes/n05-demand-structure/README.md) | demand-lifecycle | 需求文档结构：实体与视图分离的分类法 |
-| [n06-demand-status](nodes/n06-demand-status/README.md) | demand-lifecycle | 需求状态机与三套状态词归一 |
-| [n07-demand-guard](nodes/n07-demand-guard/README.md) | demand-lifecycle | 需求结构门禁：demand 检查器与两 lane 隔离 |
+| [n05-demand](nodes/n05-demand/README.md) | demand-lifecycle | 需求文档体系（一个节点，三个内聚子模块，不平铺） |
+
+`n05-demand` 的子模块（层次关系，按序阅读）：
+
+| 子模块 | 回答的问题 |
+|---|---|
+| [structure](nodes/n05-demand/structure.md) | 需求文档分几类、放哪、叫什么 |
+| [status](nodes/n05-demand/status.md) | 状态有哪几种、看板/树/文档怎么对齐 |
+| [guard](nodes/n05-demand/guard.md) | 怎么机械校验、怎么和 docs-system lane 隔离 |
 
 ## 6. 验证
 

@@ -22,9 +22,7 @@
       {
         "id": "demand-lifecycle",
         "nodes": [
-          "n05-demand-structure",
-          "n06-demand-status",
-          "n07-demand-guard"
+          "n05-demand"
         ],
         "when": "新建需求、整理需求目录、对齐状态视图、跑需求结构门禁"
       }
@@ -48,16 +46,8 @@
         "title": "后置检测：残留检测能力与守卫接入"
       },
       {
-        "id": "n05-demand-structure",
-        "title": "需求文档结构：实体与视图分离的分类法"
-      },
-      {
-        "id": "n06-demand-status",
-        "title": "需求状态机与视图映射"
-      },
-      {
-        "id": "n07-demand-guard",
-        "title": "需求结构门禁：demand 检查器与两 lane 隔离"
+        "id": "n05-demand",
+        "title": "需求文档体系：结构分类、状态映射、结构门禁（含 3 子模块）"
       }
     ],
     "profile": "skill-cli",

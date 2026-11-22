@@ -1,5 +1,5 @@
 {
-  "description": "docs-ops 的节点与链路契约。nodes 只讲方法与门禁。两 lane 隔离：docs-system 管项目说明文档，demand-lifecycle 管需求生命周期文档。",
+  "description": "docs-ops 的节点与链路契约。nodes 只讲方法与门禁。docs-system 管项目说明文档；demand-lifecycle 管需求生命周期文档，其 n05-demand 以 modules 表达内聚子模块（structure/status/guard），不平铺为多个节点。",
   "lanes": {
     "docs-system": {
       "nodes": [
@@ -14,9 +14,7 @@
     },
     "demand-lifecycle": {
       "nodes": [
-        "n05-demand-structure",
-        "n06-demand-status",
-        "n07-demand-guard"
+        "n05-demand"
       ],
       "when": "新建需求、整理需求目录、对齐状态视图、跑需求结构门禁",
       "engine": "demand_check.py",
@@ -40,17 +38,14 @@
       "readme": "nodes/n04-guard/README.md",
       "title": "后置检测：残留检测能力与守卫接入"
     },
-    "n05-demand-structure": {
-      "readme": "nodes/n05-demand-structure/README.md",
-      "title": "需求文档结构：实体与视图分离的分类法"
-    },
-    "n06-demand-status": {
-      "readme": "nodes/n06-demand-status/README.md",
-      "title": "需求状态机与视图映射"
-    },
-    "n07-demand-guard": {
-      "readme": "nodes/n07-demand-guard/README.md",
-      "title": "需求结构门禁：demand 检查器与两 lane 隔离"
+    "n05-demand": {
+      "readme": "nodes/n05-demand/README.md",
+      "title": "需求文档体系：结构分类、状态映射、结构门禁",
+      "modules": [
+        { "id": "structure", "path": "nodes/n05-demand/structure.md", "title": "需求目录分类法：实体与视图分离" },
+        { "id": "status", "path": "nodes/n05-demand/status.md", "title": "状态机与三套状态词归一" },
+        { "id": "guard", "path": "nodes/n05-demand/guard.md", "title": "结构门禁：demand 检查器与两 lane 隔离" }
+      ]
     }
   },
   "schema_version": 1

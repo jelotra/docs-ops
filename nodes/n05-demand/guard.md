@@ -1,5 +1,7 @@
 # 需求结构门禁（后置检测）
 
+> 所属节点：[n05-demand 需求文档体系](README.md) · 结构 → 状态 → 门禁
+
 > **何时进入**：需求文档写完、交付前、或 CI 中需要机械校验需求结构时。
 > **离开条件**：`demand` 检查 errors=0，warning 已确认是有意缺号/待补项。
 
@@ -52,4 +54,4 @@ python scripts/docs-ops.py demand --project <项目> --markdown --out report.md
 ## 边界
 
 - 只做结构检查，不验证需求内容的正确性（归 Workloop N05 设计评审、N11 独立复核）。
-- 不执行修复——只报告，修复由 agent/人按 n05/n06 完成。
+- 不执行修复——只报告，修复由 agent/人按本节点的 structure / status 模块完成。
