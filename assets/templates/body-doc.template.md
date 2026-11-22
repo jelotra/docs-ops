@@ -14,3 +14,6 @@
 
 - [文档地图](index.md)
 - [历史档案]($historyPath)
+
+<!-- 格式纪律：中文标题与正文；引用一律可点击（相对路径）；文件/目录名 kebab-case；
+     表格单元格短值短判定、列数 >8 拆分；不写日期与时点计数（详见 assets/checklists/preflight.md）。 -->

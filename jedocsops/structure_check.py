@@ -38,6 +38,13 @@ DEFAULT_CONTRACT = {
     "roadmapPastPatterns": [r"\b20\d{2}-\d{2}-\d{2}\b", "已交付", "本轮", "首轮", "上轮",
                             "时点", "上次交付"],
     "roadmapWhy": "roadmap 只写未来方向，不得含过去时措辞/时点数据",
+    # 正文通用过去时检查：所有正文文档（索引/历史除外）不得含日期/时点计数/已交付措辞。
+    # 与 roadmapPast 独立，因为 n02 规则适用于全部正文，而不仅是 roadmap。
+    "bodyPastPatterns": [r"\b20\d{2}-\d{2}-\d{2}\b", r"\b\d+\s+passed\b", "已交付",
+                         "本轮", "首轮", "上轮", "上次交付", "当前基线"],
+    "bodyPastExemptRegex": r"^\s*>",  # 引用块（如「本文档描述当前是什么」元说明）豁免
+    "bodyPastWhy": "正文含过去时/时点措辞（会过期的内容应进历史层，正文只写当前是什么）",
+    "bodyPastSeverity": "error",
 }
 
 
@@ -125,7 +132,28 @@ def check(project: Path, contract: dict) -> tuple[dict, list[str], int]:
                                      "text": line.strip()[:140]})
                     break
 
-    # ④ historyIndex：历史目录存在则必须有索引
+    # ④ bodyPast：所有正文文档不得含过去时/时点措辞（n02 规则的机器兜底）
+    body_past = contract.get("bodyPastPatterns") or []
+    if body_past:
+        exempt_re = re.compile(contract.get("bodyPastExemptRegex") or r"(?!x)x")
+        for path in md_files:
+            r = rel(path)
+            inside_history = history_dir in path.parents or path == history_dir
+            if inside_history or path.name in index_names or r in exempt_links:
+                continue
+            for i, line in enumerate(path.read_text(encoding="utf-8", errors="replace").split("\n")):
+                if exempt_re.search(line):
+                    continue
+                for pattern in body_past:
+                    if re.search(pattern, line):
+                        findings.append({"check": "body-past",
+                                         "severity": contract.get("bodyPastSeverity") or "error",
+                                         "file": r, "line": i + 1,
+                                         "why": contract.get("bodyPastWhy"),
+                                         "text": line.strip()[:140]})
+                        break
+
+    # ⑤ historyIndex：历史目录存在则必须有索引
     if history_dir.is_dir() and not (project / contract["historyIndex"]).is_file():
         findings.append({"check": "history-index", "severity": "error",
                          "file": contract["historyIndex"], "line": 0,

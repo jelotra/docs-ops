@@ -4,11 +4,11 @@
 
 项目文档体系规范与残留检测的统一入口：**前置**让 agent「写对」（分层契约 + 模板 + 清单），**后置**让门禁「拦住」（语言无关残留检测 + 文档结构检查）。一个体系、一个入口。
 
-通用的语言 / 链接 / 表格 / 命名格式规范归 `document-governance`（引用不重写）；本 skill 只拥有项目文档的**体系分层**与**残留检测**两项能力。
+本 skill 自带通用文档的最小格式规范与[交付前清单](assets/checklists/preflight.md)，独立即可完成分层、写作、归档与残留检测的全部职责；深度格式 lint（emoji 词表、超宽表格等）可由 `document-governance` 可选增强，非必需。
 
 ## 文档地图
 
-正文层文档地图见 [docs/README.md](docs/README.md)；历史档案见 [docs/history/README.md](docs/history/README.md)。
+正文层文档地图见 [docs/README.md](docs/README.md)；历史档案见 [docs/history/README.md](docs/history/README.md)；交付前自检见 [preflight 清单](assets/checklists/preflight.md)。
 
 ## 安装
 

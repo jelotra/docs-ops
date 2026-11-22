@@ -11,5 +11,9 @@
   "historyLinkSeverity": "error",
   "roadmapFiles": [],
   "roadmapPastPatterns": [],
-  "roadmapWhy": "roadmap 只写未来方向，不得含过去时措辞/时点数据"
+  "roadmapWhy": "roadmap 只写未来方向，不得含过去时措辞/时点数据",
+  "bodyPastPatterns": ["\\b20\\d{2}-\\d{2}-\\d{2}\\b", "\\b\\d+\\s+passed\\b", "已交付", "本轮", "首轮", "上轮", "上次交付", "当前基线"],
+  "bodyPastExemptRegex": "^\\s*>",
+  "bodyPastWhy": "正文含过去时/时点措辞（会过期的内容应进历史层，正文只写当前是什么）",
+  "bodyPastSeverity": "error"
 }

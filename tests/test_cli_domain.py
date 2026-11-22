@@ -57,6 +57,26 @@ def test_check_reports_violation(tmp_path):
     assert code == 1
 
 
+def test_check_flags_past_tense_in_body_doc(tmp_path):
+    """n02 机器兜底：正文文档含日期/时点计数/已交付措辞必须被 body-past 拦截。"""
+    _doc_tree(tmp_path)
+    (tmp_path / "docs" / "concepts" / "stale.md").write_text(
+        "# 陈旧\n2026-01-01 已交付，当前基线 51 passed。[历史档案](../history/README.md)\n",
+        encoding="utf-8")
+    code = cli.main(["check", "--project", str(tmp_path)])
+    assert code == 1
+
+
+def test_check_allows_quote_block_meta(tmp_path):
+    """引用块（> 元说明）豁免 body-past，不误伤模板自带的说明行。"""
+    _doc_tree(tmp_path)
+    (tmp_path / "docs" / "concepts" / "quoted.md").write_text(
+        "# 合规\n> 本文档描述当前是什么，历史见 [历史档案](../history/README.md)。\n正文只写当前机制。\n",
+        encoding="utf-8")
+    code = cli.main(["check", "--project", str(tmp_path)])
+    assert code == 0
+
+
 def test_check_missing_rules_is_config_error(tmp_path):
     code = cli.main(["check", "--project", str(tmp_path), "--skip-structure"])
     assert code == 2

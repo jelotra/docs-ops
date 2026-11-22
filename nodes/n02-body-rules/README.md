@@ -23,5 +23,5 @@
 ## 边界
 
 - 不写「为什么这么设计」的长论证——那是 ADR/决策档案（历史层）的事。
-- 表格范式、emoji 词表、命名长度等格式细节归 `document-governance`。
+- 表格短值短判定、命名 kebab-case 等最小格式纪律见自带清单 `assets/checklists/preflight.md` D 节；emoji 词表等深度 lint 可由 `document-governance` 可选增强。
 - 后置守卫（n04）是兜底不是替代：本节点失败可返工，门禁红灯阻断提交。

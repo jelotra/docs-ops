@@ -23,5 +23,5 @@
 ## 边界
 
 - 本节点不决定「每份文档写什么内容」（那是 n02）。
-- 语言/表格/链接格式契约归 `document-governance`，本 skill 只管结构分层。
+- 本 skill 自带最小格式规范（见 `assets/checklists/preflight.md` D 节），独立即可完成职责；深度格式 lint 可由 `document-governance` 可选增强。
 - 无 `docs/` 目录的项目：检查器自动跳过并提示，不算失败。

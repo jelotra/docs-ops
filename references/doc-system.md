@@ -27,8 +27,8 @@
 | reference-cli | 命令参考 | 退出码约定 + 占位符纪律 |
 | history-index | 历史档案索引 | 「只进不改」纪律与登记表 |
 
-## 4. 与 document-governance 的边界
+## 4. 自带格式规范与可选增强
 
-- `document-governance` 拥有：语言契约、链接格式、表格范式、命名/emoji、模板矩阵、深度格式 lint。
-- je-docs-ops 拥有：**结构分层**（两层/目录/跳转位）、**归档流程**、**残留检测**。
-- 引用而不重写：本文不复制通用格式规范；项目文档同时受两者约束（格式 → document-governance lint，结构 → 本 skill check）。
+- je-docs-ops 拥有：**结构分层**（两层/目录/跳转位）、**写作规则**、**归档流程**、**残留检测**，并**自带通用最小格式规范**：中文优先、可点击引用（相对路径）、kebab-case 命名、表格短值短判定与列数上限。唯一事实源是 `assets/checklists/preflight.md` 的 D 节，四个模板内嵌同一纪律。
+- 深度格式 lint（emoji 词表、超宽表格自动检测、类型化模板矩阵）由 `document-governance` **可选提供**，非必需依赖；本 skill 独立即可完成全部宣称职责。
+- 两者同时存在时，格式细节以 `document-governance` 为增强口径、结构与残留以本 skill `check` 为准；不存在时本 skill 的最小规范独立成立。

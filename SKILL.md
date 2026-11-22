@@ -12,7 +12,7 @@ metadata:
 ## 1. 定位
 
 <!-- skill-content:start -->
-一个体系、一个入口：**前置**让 agent「写对」（分层契约 + 模板 + 清单），**后置**让门禁「拦住」（语言无关残留检测 + 结构检查）。通用文档格式规范归 `document-governance`（引用不重写）；本 skill 拥有项目文档**体系分层**与**残留检测**能力。
+一个体系、一个入口：**前置**让 agent「写对」（分层契约 + 模板 + 自带交付前清单），**后置**让门禁「拦住」（语言无关残留检测 + 结构检查 + 正文过去时兜底）。本 skill 自带通用文档的最小格式规范与清单，独立即可完成全部职责；深度格式 lint（emoji 词表、超宽表格等）可由 `document-governance` 可选增强，非必需。
 <!-- skill-content:end -->
 
 本 Skill 采用 Workloop 结构：方法论在 `nodes/`，契约与链路在
@@ -74,6 +74,7 @@ python tools/run_tests.py             # 并行入口
 
 - [残留类型学与规则 schema](references/residue-taxonomy.md)：五层残留分类、每层检测原语、rules.json 完整契约。
 - [文档分层规范](references/doc-system.md)：正文/历史两层判定、模板契约、目录契约数据。
+- [交付前清单](assets/checklists/preflight.md)：正文规则、分层归档、残留门禁、自带最小格式纪律的自检项。
 - [架构](references/architecture.md)
 
 ## 7. 扩展
