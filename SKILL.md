@@ -4,7 +4,7 @@ description: "文档体系多 lane 统一入口：docs-system（项目说明文�
 argument-hint: "<项目路径> / <lane> / <文档类型> / <期望输出>"
 user-invocable: true
 metadata:
-  version: "0.3.0"
+  version: "0.4.0"
 ---
 
 # docs-ops

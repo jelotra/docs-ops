@@ -3,7 +3,7 @@
   "name": "docs-ops",
   "kind": "capability",
   "layer": "generic",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "summary": "文档体系多 lane 统一入口：docs-system（正文/历史分层、模板、结构检查、残留检测 pattern/dirList/deadLinks/generatedDrift + ledger 提取 + 守卫铸造）+ demand-lifecycle（需求文档结构检查、状态视图、验收编号门禁）。两 lane 契约与引擎隔离，互不误伤。",
   "entrypoints": [
     "SKILL.md",
