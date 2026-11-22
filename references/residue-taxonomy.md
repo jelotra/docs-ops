@@ -86,5 +86,5 @@
 - L4/L5 静态原理上不可检：本 skill 的职责边界是 L1/L2/L3 的机械检出 + L4/L5 的
   「检查清单提醒」（behavior-acceptance / architecture-audit 须由项目纪律承担）。
 - ledger 依赖 commit 记录；squash/无历史项目需人工提供旧名清单（`patterns` 直接手写）。
-- 引擎为零依赖 Python ≥3.11 标准库脚本：检测能力=文本与文件系统层；AST 级语义匹配（ast-grep 等）
+- 引擎为零依赖 Python ≥3.9 标准库脚本（PEP 585 泛型注解）：检测能力=文本与文件系统层；AST 级语义匹配（ast-grep 等）
   属未来增强，不在本版承诺内。

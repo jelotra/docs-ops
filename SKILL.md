@@ -68,7 +68,7 @@ python -I -m pytest tests -q          # 结构 + 引擎行为 + 合同测试（�
 python tools/run_tests.py             # 并行入口
 ```
 
-报告型 CLI：`--format text|json|markdown`、`--json`、`--markdown`、`--out`；依赖同级 `skills-runtime-toolkit` 或 `SKILLS_RUNTIME_TOOLKIT` 指向其根目录。
+报告型 CLI：`--format text|json|markdown`、`--json`、`--markdown`、`--out`。CLI 统一依赖通用运行时库 `skills_runtime_toolkit` 的 `report_output`（纯库，只被 import、不参与路由）：优先从环境变量 `SKILLS_RUNTIME_TOOLKIT` 指向的根目录加载，否则从同级 `skills-runtime-toolkit/` 加载；缺失时所有 CLI 子命令无法启动。
 
 ## 6. 知识索引
 
