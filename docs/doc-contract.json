@@ -1,0 +1,15 @@
+{
+  "$doc": "je-docs-ops 自身的文档结构契约：正文层仅 concepts/，历史层 docs/history/。",
+  "bodyDir": "docs",
+  "historyDir": "docs/history",
+  "historyIndex": "docs/history/README.md",
+  "allowedDirs": ["concepts"],
+  "indexFiles": ["docs/README.md", "docs/index.md"],
+  "historyLinkExempt": [],
+  "historyLinkRegex": "\\[[^\\]]*\\]\\(([^)\\s]*history[^)\\s]*)\\)",
+  "historyLinkWhy": "正文层文档缺少「历史档案」跳转位（正文不写历史，只留跳转）",
+  "historyLinkSeverity": "error",
+  "roadmapFiles": [],
+  "roadmapPastPatterns": [],
+  "roadmapWhy": "roadmap 只写未来方向，不得含过去时措辞/时点数据"
+}

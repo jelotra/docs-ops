@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skipDirs": [],
+  "patterns": [],
+  "dirLists": [],
+  "deadLinks": {
+    "include": [
+      "README.md",
+      "**/*.md"
+    ],
+    "exclude": [
+      "assets/templates/**"
+    ],
+    "why": "相对链接目标不存在（路径改名残留）；模板中的 $historyPath/index.md 是占位符，不参与检查"
+  },
+  "generatedDrift": []
+}
