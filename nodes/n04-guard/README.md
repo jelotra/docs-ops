@@ -1,7 +1,7 @@
 # 后置检测：残留检测能力与守卫接入
 
 > **何时进入**：文档/代码交付前，每次测试与 CI；或新发生一次「残留事故」需要固化为规则时。
-> **离开条件**：`doc_ops check`（结构 + 残留）退出码 0；守卫已接入项目 test runner / CI。
+> **离开条件**：`python scripts/je-docs-ops.py check --project <项目>`（结构 + 残留）退出码 0；守卫已接入项目 test runner / CI。
 
 ## 输入
 

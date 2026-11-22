@@ -49,7 +49,7 @@
       "owner": "managed"
     },
     "SKILL.md": {
-      "initial_sha256": "da4bad4dafb60acc7722e404616ed2fe9e6c940a26b0b81d75c2876cebc89336",
+      "initial_sha256": "9b8409aa9b623e50dd8211553790c380e390cf11a62f0842f8f09f3355137699",
       "owner": "extension"
     },
     "conftest.py": {
@@ -97,7 +97,7 @@
       "owner": "managed"
     },
     "scripts/je-docs-ops.py": {
-      "initial_sha256": "8253e5cfbbb71f0d1d1e284bfb2dd93a35a2a329d55d48c1730316028fdd18c9",
+      "initial_sha256": "c5c526ec707c078baf04c837a1c7966db2299615b87835336f6f14e99a7767df",
       "owner": "managed"
     },
     "skill.manifest.json": {

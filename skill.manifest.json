@@ -26,7 +26,7 @@
       "residue-ledger",
       "residue-mint"
     ],
-    "consumes": ["runtime-foundations", "markdown-primitives"]
+    "consumes": ["report-output-v1"]
   },
   "depends_on": {
     "tools": [],

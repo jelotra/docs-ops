@@ -108,6 +108,21 @@ def test_residue_missing_rules_exit_two(tmp_path):
     assert code == 2
 
 
+def test_shim_survives_gbk_console(tmp_path):
+    """入口 shim 必须在 GBK 默认控制台下不崩：new 打印 ✓/中文时不得抛 UnicodeEncodeError。"""
+    import os
+    out = tmp_path / "docs" / "gbk.md"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    # 模拟中文 Windows：PYTHONIOENCODING=gbk，stdout 不支持 ✓ 字符。
+    env = {**os.environ, "PYTHONIOENCODING": "gbk"}
+    proc = subprocess.run([sys.executable, str(SHIM), "new", "--type", "history-index",
+                           "--out", str(out), "--title", "中文标题"],
+                          capture_output=True, env=env)
+    assert proc.returncode == 0, proc.stderr.decode("utf-8", errors="replace")
+    assert b"UnicodeEncodeError" not in proc.stderr
+    assert out.exists()
+
+
 def test_shim_exit_codes_no_tuple_leak(tmp_path):
     """入口 shim 退出码契约：migrate 文件缺失=2、mint 成功=0；stderr 不得泄漏 tuple 字面量。"""
     missing = tmp_path / "missing.md"
