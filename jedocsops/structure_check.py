@@ -31,6 +31,7 @@ DEFAULT_CONTRACT = {
     "allowedDirs": None,  # null = 不限制；数组 = 仅允许这些 bodyDir 一级子目录
     "indexFiles": ["README.md", "index.md"],  # 免 historyLink 检查的索引文件
     "historyLinkExempt": [],  # 免 historyLink 检查的存量正文（相对路径；新写文档不得加入）
+    "exemptDirs": [],  # 整目录排除出正文层（如过程档案区 docs/request/）；目录级，非逐文件豁免
     "historyLinkRegex": r"\[[^\]]*\]\(([^)\s]*history[^)\s]*)\)",
     "historyLinkWhy": "正文层文档缺少「历史档案」跳转位（正文不写历史，只留跳转）",
     "historyLinkSeverity": "error",
@@ -89,12 +90,16 @@ def check(project: Path, contract: dict) -> tuple[dict, list[str], int]:
     history_link_re = re.compile(contract["historyLinkRegex"])
     index_names = set(contract.get("indexFiles") or [])
     allowed = contract.get("allowedDirs")
+    exempt_dirs = [project / d for d in (contract.get("exemptDirs") or [])]
+
+    def in_exempt(path: Path) -> bool:
+        return any(d in path.parents or path == d for d in exempt_dirs)
 
     # ① allowedDirs：正文层一级目录归属
     for path in md_files:
         r = rel(path)
         inside_history = history_dir in path.parents or path == history_dir
-        if inside_history:
+        if inside_history or in_exempt(path):
             continue
         parent = path.parent.relative_to(body_dir).as_posix()
         top = parent.split("/")[0] if parent != "." else "."
@@ -108,7 +113,7 @@ def check(project: Path, contract: dict) -> tuple[dict, list[str], int]:
     for path in md_files:
         r = rel(path)
         inside_history = history_dir in path.parents or path == history_dir
-        if inside_history or path.name in index_names or r in exempt_links:
+        if inside_history or in_exempt(path) or path.name in index_names or r in exempt_links:
             continue
         text = path.read_text(encoding="utf-8", errors="replace")
         if not history_link_re.search(text):
@@ -139,7 +144,7 @@ def check(project: Path, contract: dict) -> tuple[dict, list[str], int]:
         for path in md_files:
             r = rel(path)
             inside_history = history_dir in path.parents or path == history_dir
-            if inside_history or path.name in index_names or r in exempt_links:
+            if inside_history or in_exempt(path) or path.name in index_names or r in exempt_links:
                 continue
             for i, line in enumerate(path.read_text(encoding="utf-8", errors="replace").split("\n")):
                 if exempt_re.search(line):

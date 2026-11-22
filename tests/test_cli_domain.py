@@ -67,6 +67,23 @@ def test_check_flags_past_tense_in_body_doc(tmp_path):
     assert code == 1
 
 
+def test_check_exempt_dirs_skips_process_archives(tmp_path):
+    """exemptDirs 整目录排除：过程档案区（如 docs/request/）不受正文规则约束。"""
+    _doc_tree(tmp_path)
+    req = tmp_path / "docs" / "request" / "DEMAND-001"
+    req.mkdir(parents=True)
+    (req / "01-spec.md").write_text(
+        "# 需求\n2026-11-21 已交付，当前基线 51 passed。无历史跳转位也合规。\n",
+        encoding="utf-8")
+    # 通过 --project 用默认契约无法设 exemptDirs；直接验证结构检查函数级行为
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from jedocsops import structure_check
+    c = structure_check.load_contract(None, tmp_path)
+    c["exemptDirs"] = ["docs/request"]
+    env, _, _ = structure_check.check(tmp_path, c)
+    assert env["status"] == "passed" and env["violations"] == 0
+
+
 def test_check_allows_quote_block_meta(tmp_path):
     """引用块（> 元说明）豁免 body-past，不误伤模板自带的说明行。"""
     _doc_tree(tmp_path)
